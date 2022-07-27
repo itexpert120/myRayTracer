@@ -54,13 +54,15 @@ int main() {
 	world.add(make_shared<sphere>(point3(-1.0, 0.0, -1.0), -0.45, material_left));
 	world.add(make_shared<sphere>(point3(1.0, 0.0, -1.0), 0.5, material_right));
 
-	// camera
-	point3 lookfrom(-2, 2, 1);
+	// cameravec3 offset = u * rd.x() + v * rd.y();
+	point3 lookfrom(3, 3, 2);
 	point3 lookat(0, 0, -1);
 	point3 vup(0, 1, 0);
+	auto dist_to_focus = (lookfrom - lookat).length();
+	auto aperture = 2.0;
 	const int fov = 20;
 
-	camera cam(lookfrom, lookat, vup, fov, aspect_ratio);
+	camera cam(lookfrom, lookat, vup, fov, aspect_ratio, aperture, dist_to_focus);
 
 	//render
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
