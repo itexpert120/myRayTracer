@@ -1,4 +1,5 @@
 // main.cpp
+// written by @itexpert120
 
 #include "rtweekend.h"
 
